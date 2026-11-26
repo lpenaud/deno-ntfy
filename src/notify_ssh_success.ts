@@ -7,6 +7,7 @@ async function main(): Promise<number> {
     PAM_TYPE: pamType,
     NTFY_URL: rootUrl,
     NTFY_TOKEN: token,
+    NTFY_TOPIC: topic,
   } = Deno.env.toObject();
   const ntfy = new NtfyClient({ rootUrl, token });
   const hostname = Deno.hostname();
@@ -38,7 +39,7 @@ async function main(): Promise<number> {
 ${env}
 \`\`\`
 `,
-      topic: "ssh-alerts",
+      topic,
       tags: [
         emoji,
         "ssh",
